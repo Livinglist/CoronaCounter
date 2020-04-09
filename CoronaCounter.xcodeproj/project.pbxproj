@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,8 @@
 		5E4D75D3243EFC2400C409DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4D75D2243EFC2400C409DF /* ViewController.swift */; };
 		5E4D75D5243EFC2500C409DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E4D75D4243EFC2500C409DF /* Assets.xcassets */; };
 		5E4D75D8243EFC2500C409DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E4D75D6243EFC2500C409DF /* Main.storyboard */; };
+		5E4D75E4243F03B000C409DF /* Kanna in Frameworks */ = {isa = PBXBuildFile; productRef = 5E4D75E3243F03B000C409DF /* Kanna */; };
+		5E4D75E7243F091F00C409DF /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 5E4D75E6243F091F00C409DF /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E4D75E4243F03B000C409DF /* Kanna in Frameworks */,
+				5E4D75E7243F091F00C409DF /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +83,10 @@
 			dependencies = (
 			);
 			name = CoronaCounter;
+			packageProductDependencies = (
+				5E4D75E3243F03B000C409DF /* Kanna */,
+				5E4D75E6243F091F00C409DF /* Alamofire */,
+			);
 			productName = CoronaCounter;
 			productReference = 5E4D75CD243EFC2300C409DF /* CoronaCounter.app */;
 			productType = "com.apple.product-type.application";
@@ -107,6 +115,10 @@
 				Base,
 			);
 			mainGroup = 5E4D75C4243EFC2300C409DF;
+			packageReferences = (
+				5E4D75E2243F03B000C409DF /* XCRemoteSwiftPackageReference "Kanna" */,
+				5E4D75E5243F091F00C409DF /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 5E4D75CE243EFC2300C409DF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -327,6 +339,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5E4D75E2243F03B000C409DF /* XCRemoteSwiftPackageReference "Kanna" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tid-kijyun/Kanna.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.2;
+			};
+		};
+		5E4D75E5243F091F00C409DF /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5E4D75E3243F03B000C409DF /* Kanna */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5E4D75E2243F03B000C409DF /* XCRemoteSwiftPackageReference "Kanna" */;
+			productName = Kanna;
+		};
+		5E4D75E6243F091F00C409DF /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5E4D75E5243F091F00C409DF /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5E4D75C5243EFC2300C409DF /* Project object */;
 }
