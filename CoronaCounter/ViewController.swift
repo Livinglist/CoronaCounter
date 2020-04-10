@@ -88,6 +88,11 @@ class ViewController: NSViewController, WKUIDelegate, WKNavigationDelegate{
                                         print(countryNameSpans[i].text!)
                                     }
                                     
+                                    let item = NSMenuItem(title: "Quit CoronaCounter", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
+                                    
+                                    self.statusBarMenu.addItem(NSMenuItem.separator())
+                                    self.statusBarMenu.addItem(item)
+                                    
                                     if let button = self.statusItem.button {
                                         button.title = "\(countryName!): \(confirmed!) confirmed \(recovered!) recovered \(deaths!) deaths"
                                     }
