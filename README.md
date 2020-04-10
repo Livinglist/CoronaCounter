@@ -1,4 +1,4 @@
-![Image](https://github.com/Livinglist/CoronaCounter/blob/master/github_logo.png)
+![Image](https://github.com/Livinglist/CoronaCounter/blob/master/github_logo.png?raw=true)
 
 ## Welcome to CoronaCounter
 
