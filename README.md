@@ -6,5 +6,5 @@
 
 OR
 
-- Download CoronaCounter.dmg from [CoronaCounter](https://livinglist.github.io/CoronaCounter/)
+- Download the zip file and open **CoronaCounter.dmg** then drag it into Applications folder.
 
