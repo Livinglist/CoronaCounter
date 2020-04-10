@@ -28,6 +28,7 @@ class ViewController: NSViewController, WKUIDelegate, WKNavigationDelegate{
     var infoByCountryDict: [String: Info] = [String: Info]()
     var gameTimer: Timer?
     var web: WKWebView!
+    var curCountry: String? = nil
     
     override func loadView() {
         let webConfiguration = WKWebViewConfiguration()
@@ -69,15 +70,13 @@ class ViewController: NSViewController, WKUIDelegate, WKNavigationDelegate{
                                     if countryNameSpans.count < 20{
                                         self.loadItems()
                                     }
+                                    
                                     let confirmSpans = doc.xpath("//*/c-wiz/div/div/div/div/div/div/div/div/div/div/div/table/tbody/tr/td[2]")
                                     let recoverSpans = doc.xpath("//*/c-wiz/div/div/div/div/div/div/div/div/div/div/div/table/tbody/tr/td[4]")
                                     let deathSpans = doc.xpath("//*/c-wiz/div/div/div/div/div/div/div/div/div/div/div/table/tbody/tr/td[5]")
                                     
-                                    let countryName = countryNameSpans.first?.text;
-                                    let confirmed = confirmSpans.first?.text;
-                                    let recovered = recoverSpans.first?.text;
-                                    let deaths = deathSpans.first?.text;
-                                    
+                                    let countryName = self.curCountry ?? countryNameSpans.first?.text;
+                                    self.curCountry = countryName;
                                     
                                     for i in 0..<countryNameSpans.count {
                                         self.infoByCountryDict[countryNameSpans[i].text!] = Info(confrims: confirmSpans[i].text!, recovers: recoverSpans[i].text!, deaths: deathSpans[i].text!);
@@ -87,6 +86,10 @@ class ViewController: NSViewController, WKUIDelegate, WKNavigationDelegate{
                                         
                                         print(countryNameSpans[i].text!)
                                     }
+                                    
+                                    let confirmed = self.infoByCountryDict[countryName!]?.confirms;
+                                    let recovered = self.infoByCountryDict[countryName!]?.recovers;
+                                    let deaths = self.infoByCountryDict[countryName!]?.deaths;
                                     
                                     let item = NSMenuItem(title: "Quit CoronaCounter", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
                                     
@@ -126,6 +129,7 @@ class ViewController: NSViewController, WKUIDelegate, WKNavigationDelegate{
     @objc func printQuote(_ sender: Any?) {
         let item:NSMenuItem = sender as! NSMenuItem
         print(item.title)
+        curCountry = item.title;
         let confirmed = infoByCountryDict[item.title]?.confirms;
         let deaths = infoByCountryDict[item.title]?.deaths;
         let recovered = infoByCountryDict[item.title]?.recovers;
