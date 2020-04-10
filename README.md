@@ -1,3 +1,5 @@
+![image](https://github.com/Livinglist/CoronaCounter/blob/master/screenshot.png?raw=true)
+
 ## Welcome to CoronaCounter
 
 ### installation
