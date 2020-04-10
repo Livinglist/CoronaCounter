@@ -36,37 +36,39 @@ class ViewController: NSViewController, WKUIDelegate, WKNavigationDelegate{
         web.navigationDelegate = self
         let myURL = URL(string:"https://google.com/covid19-map/?hl=en")
         let myRequest = URLRequest(url: myURL!)
+        web.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
         web.load(myRequest)
         
         statusItem.menu = statusBarMenu;
         if let button = statusItem.button {
             button.title = "Loading..."
         }
+        print("schedule a timer");
+        gameTimer = Timer.scheduledTimer(timeInterval: 300, target: self, selector: #selector(loadWeb), userInfo: nil, repeats: true)
     }
     
-    override func viewDidLoad() {
-        print("viewDidLoad")
-        super.viewDidLoad()
-        
-        
-        
-        //gameTimer = Timer.scheduledTimer(timeInterval: 300, target: self, selector: #selector(loadWeb), userInfo: nil, repeats: true)
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "estimatedProgress" {
+            print(Float(web.estimatedProgress))
+            if(Float(web.estimatedProgress) == 1.0){
+                loadItems()
+            }
+        }
     }
     
-    //    @objc func loadWeb(){
-    //        let myURL = URL(string:"https://google.com/covid19-map/?hl=en")
-    //        let myRequest = URLRequest(url: myURL!)
-    //        web.load(myRequest)
-    //    }
-    
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        print("web view called")
+    func loadItems(){
         web.evaluateJavaScript("document.documentElement.outerHTML",
                                completionHandler: { (html: Any?, error: Error?) in
                                 if let doc = try? HTML(html: html as! String, encoding: .utf8) {
                                     print("below is the thing")
                                     
+                                    self.statusItem.menu?.removeAllItems();
+                                    
                                     let countryNameSpans = doc.xpath("//*/c-wiz/div/div/div/div/div/div/div/div/div/div/div/table/tbody/tr/td/span")
+                                    
+                                    if countryNameSpans.count < 20{
+                                        self.loadItems()
+                                    }
                                     let confirmSpans = doc.xpath("//*/c-wiz/div/div/div/div/div/div/div/div/div/div/div/table/tbody/tr/td[2]")
                                     let recoverSpans = doc.xpath("//*/c-wiz/div/div/div/div/div/div/div/div/div/div/div/table/tbody/tr/td[4]")
                                     let deathSpans = doc.xpath("//*/c-wiz/div/div/div/div/div/div/div/div/div/div/div/table/tbody/tr/td[5]")
@@ -83,7 +85,7 @@ class ViewController: NSViewController, WKUIDelegate, WKNavigationDelegate{
                                         item.target = self;
                                         self.statusItem.menu?.addItem(item);
                                         
-                                        print(countryNameSpans[i].text)
+                                        print(countryNameSpans[i].text!)
                                     }
                                     
                                     if let button = self.statusItem.button {
@@ -91,6 +93,22 @@ class ViewController: NSViewController, WKUIDelegate, WKNavigationDelegate{
                                     }
                                 }
         })
+    }
+    
+    override func viewDidLoad() {
+        print("viewDidLoad")
+        super.viewDidLoad()
+    }
+    
+    @objc func loadWeb(){
+        print("load web called")
+        let myURL = URL(string:"https://google.com/covid19-map/?hl=en")
+        let myRequest = URLRequest(url: myURL!)
+        web.load(myRequest)
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("web view called")
     }
     
     override var representedObject: Any? {
