@@ -142,7 +142,7 @@ class ViewController: NSViewController, WKUIDelegate, WKNavigationDelegate{
     
     @objc func loadWeb(){
         print("load web called")
-        let myURL = URL(string:"https://google.com/covid19-map/?hl=en")
+        let myURL = URL(string:"https://en.wikipedia.org/wiki/Template:2019%E2%80%9320_coronavirus_pandemic_data#covid19-container")
         let myRequest = URLRequest(url: myURL!)
         web.load(myRequest)
     }
