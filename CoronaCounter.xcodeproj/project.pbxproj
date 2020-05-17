@@ -13,6 +13,7 @@
 		5E4D75D8243EFC2500C409DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E4D75D6243EFC2500C409DF /* Main.storyboard */; };
 		5E4D75E4243F03B000C409DF /* Kanna in Frameworks */ = {isa = PBXBuildFile; productRef = 5E4D75E3243F03B000C409DF /* Kanna */; };
 		5E4D75E7243F091F00C409DF /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 5E4D75E6243F091F00C409DF /* Alamofire */; };
+		B6C81D37247169EF0041108D /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C81D36247169EF0041108D /* Info.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		5E4D75D7243EFC2500C409DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5E4D75D9243EFC2500C409DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E4D75DA243EFC2500C409DF /* CoronaCounter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CoronaCounter.entitlements; sourceTree = "<group>"; };
+		B6C81D36247169EF0041108D /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,14 +59,39 @@
 		5E4D75CF243EFC2300C409DF /* CoronaCounter */ = {
 			isa = PBXGroup;
 			children = (
-				5E4D75D0243EFC2400C409DF /* AppDelegate.swift */,
-				5E4D75D2243EFC2400C409DF /* ViewController.swift */,
-				5E4D75D4243EFC2500C409DF /* Assets.xcassets */,
-				5E4D75D6243EFC2500C409DF /* Main.storyboard */,
+				B6C81D3924716A310041108D /* Model */,
+				B6C81D3824716A290041108D /* View */,
+				B6C81D3A24716A430041108D /* Controller */,
 				5E4D75D9243EFC2500C409DF /* Info.plist */,
 				5E4D75DA243EFC2500C409DF /* CoronaCounter.entitlements */,
 			);
 			path = CoronaCounter;
+			sourceTree = "<group>";
+		};
+		B6C81D3824716A290041108D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5E4D75D6243EFC2500C409DF /* Main.storyboard */,
+				5E4D75D4243EFC2500C409DF /* Assets.xcassets */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B6C81D3924716A310041108D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B6C81D36247169EF0041108D /* Info.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B6C81D3A24716A430041108D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5E4D75D2243EFC2400C409DF /* ViewController.swift */,
+				5E4D75D0243EFC2400C409DF /* AppDelegate.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E4D75D3243EFC2400C409DF /* ViewController.swift in Sources */,
+				B6C81D37247169EF0041108D /* Info.swift in Sources */,
 				5E4D75D1243EFC2400C409DF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,11 +323,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CoronaCounter/CoronaCounter.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QMWX3X2NF7;
+				DEVELOPMENT_TEAM = WHS79257BR;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = CoronaCounter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -308,9 +336,9 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = jiaqifeng.CoronaCounter;
+				PRODUCT_BUNDLE_IDENTIFIER = gaibb.CoronaCounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = corona_counter_profile;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -320,11 +348,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CoronaCounter/CoronaCounter.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QMWX3X2NF7;
+				DEVELOPMENT_TEAM = WHS79257BR;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = CoronaCounter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -333,9 +361,9 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = jiaqifeng.CoronaCounter;
+				PRODUCT_BUNDLE_IDENTIFIER = gaibb.CoronaCounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = corona_counter_profile;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
